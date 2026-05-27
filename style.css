@@ -25,11 +25,13 @@ header {
     border-bottom: 2px solid #ff4757;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff4757;
-    letter-spacing: 2px;
+.logo img {
+    max-height: 60px;
+    width: auto;
+    transition: transform 0.3s;
+}
+.logo img:hover {
+    transform: scale(1.05);
 }
 
 nav a {
