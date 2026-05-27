@@ -64,7 +64,7 @@ section h2{font-size:2rem;margin-bottom:14px}
 /* Aplicar fondo sólido con patrón punteado a todas las secciones debajo del hero */
 .site-main > section:not(.hero){
    background-color:rgba(8,8,9,0.92);
-   background-image: radial-gradient(circle, rgba(255,255,255,0.035) 0.5px, transparent 0.5px);
+   background-image: radial-gradient(circle, rgba(255,255,255,0.035) 0.8px, transparent 0.8px);
    background-size:18px 18px;
    -webkit-backdrop-filter: none;
    backdrop-filter: none;
@@ -123,16 +123,22 @@ section h2{font-size:2rem;margin-bottom:14px}
 .module:nth-child(odd) .module-inner{text-align:left}
 .module:nth-child(even) .module-inner{text-align:right}
 
-/* overlay de puntitos (estrellitas) animadas */
-.module::before{content:"";position:absolute;inset:-20%;background-image:radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);background-size:12px 12px;opacity:0.6;transform:translate3d(0,0,0);z-index:1;pointer-events:none}
+.module::before{content:"";position:absolute;inset:-20%;background-image:none;background-size:12px 12px;opacity:0;transform:translate3d(0,0,0);z-index:1;pointer-events:none}
 .module::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0));mix-blend-mode:overlay;z-index:3;pointer-events:none;opacity:0.6}
 
-/* movimiento sutil de los puntitos */
-.module::before{animation: floatDots 16s linear infinite}
+/* desactivar animación de puntitos dentro de los módulos (patrón ya está en la sección principal) */
+.module::before{animation: none}
 @keyframes floatDots{from{background-position:0 0}to{background-position:120px 80px}}
 
 /* botones en módulos */
 .module .btn{margin-top:8px}
+
+/* Centrar botones dentro de los módulos (Discord, formulario, tienda) */
+.services-grid .module .btn{display:block;margin:12px auto 0}
+
+/* Forzar título y párrafo de Whitelist a la izquierda */
+.services-grid .module:nth-child(2) .module-inner h3,
+.services-grid .module:nth-child(2) .module-inner p{ text-align:left }
 
 @media (max-width:1000px){
    .services-grid{grid-template-columns:1fr;gap:18px}
