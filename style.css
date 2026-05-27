@@ -1,159 +1,144 @@
 /* ==========================================
-   CONFIGURACIÓN GENERAL
+   THEME & BASE
    ========================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+:root{
+    --bg-color: #060607;
+    --text: #f4f4f5;
+    --muted: #bdbdbd;
+    --orange: #ff6a00;
+    --orange-2: #ff8a33;
+    --card-bg: rgba(10,10,12,0.55);
 }
 
-body {
-    background-color: #0f0f12;
-    color: #ffffff;
+*{box-sizing:border-box;margin:0;padding:0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;scroll-behavior:smooth}
+
+html,body{height:100%}
+body{
+   position:relative;
+   color:var(--text);
+   background:var(--bg-color);
+   min-height:100vh;
+}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ==========================================
+   HEADER / NAV
+   ========================================== */
+.site-header{position:sticky;top:0;z-index:40}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo img{height:56px;width:auto;display:block}
+.main-nav a{color:var(--text);text-decoration:none;margin-left:22px;font-weight:600;transition:color .18s}
+.main-nav a:hover{color:var(--orange)}
+.site-header{background:linear-gradient(180deg, rgba(6,6,6,0.45), rgba(6,6,6,0.15));backdrop-filter:blur(6px);}
+
+/* ==========================================
+   HERO
+   ========================================== */
+.hero{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;min-height:74vh;padding:80px 0;background:linear-gradient(180deg, rgba(6,6,6,0.35), rgba(6,6,6,0.1)), url('background.png') center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(6,6,6,0.45), rgba(6,6,6,0.55));z-index:1}
+.hero-inner{max-width:900px;position:relative;z-index:2}
+.hero-title{font-size:3rem;letter-spacing:1px;margin-bottom:12px}
+.hero-title .accent{color:var(--orange);font-weight:800}
+.hero-sub{color:var(--muted);margin-bottom:22px;font-size:1.05rem}
+.hero-cta .btn{margin:0 8px}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+.btn{display:inline-block;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:700;text-transform:none;transition:transform .15s,box-shadow .15s}
+.btn-primary{background:linear-gradient(90deg,var(--orange),var(--orange-2));color:#fff;box-shadow:0 6px 18px rgba(255,106,0,0.18)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(255,106,0,0.18)}
+.btn-outline{background:transparent;color:var(--text);border:2px solid rgba(255,255,255,0.08)}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+.btn-discord{background:linear-gradient(90deg,#5865f2,#4752c4);color:#fff}
+
+/* ==========================================
+   SECTIONS & CARDS
+   ========================================== */
+section.section{padding:72px 0}
+section h2{font-size:2rem;margin-bottom:14px}
+.section-dark{background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.25));}
+.section-accent{border-top:4px solid rgba(255,106,0,0.12)}
+
+/* Aplicar fondo sólido con patrón punteado a todas las secciones debajo del hero */
+.site-main > section:not(.hero){
+   background-color:rgba(8,8,9,0.92);
+   background-image: radial-gradient(circle, rgba(255,255,255,0.035) 0.5px, transparent 0.5px);
+   background-size:18px 18px;
+   -webkit-backdrop-filter: none;
+   backdrop-filter: none;
+   position:relative;
+   overflow:hidden;
+}
+
+/* animación muy sutil del patrón para dar vida sin distraer */
+.site-main > section:not(.hero){
+   animation: moveDots 18s linear infinite;
+}
+
+@keyframes moveDots{
+   from{background-position:0 0}
+   to{background-position:80px 80px}
+}
+
+.grid{display:grid;gap:18px}
+.features-grid{grid-template-columns:repeat(3,1fr)}
+
+.card{background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+.feature{min-height:120px;display:flex;align-items:center;justify-content:center;font-weight:600}
+
+.pasos{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:22px 0}
+.paso{background:rgba(0,0,0,0.35);padding:18px;border-radius:10px;min-width:220px;border-left:6px solid var(--orange)}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.site-footer{position:relative;z-index:2;padding:24px 0;color:var(--muted);}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width:900px){
+    .features-grid{grid-template-columns:repeat(2,1fr)}
+    .hero-title{font-size:2.2rem}
+}
+@media (max-width:600px){
+    .features-grid{grid-template-columns:1fr}
+    .main-nav{display:none}
+    .hero{padding:48px 0}
 }
 
 /* ==========================================
-   BARRA DE NAVEGACIÓN (HEADER)
+   SERVICES / MODULES (Discord / Whitelist / Tienda)
    ========================================== */
-header {
-    background-color: rgba(20, 20, 27, 0.95);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 2px solid #ff4757;
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+.module{position:relative;overflow:hidden;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:28px}
+.module-inner{position:relative;z-index:2}
+.module h3{font-size:1.4rem;margin-bottom:10px;color:var(--text)}
+.module p{color:var(--muted);margin-bottom:14px}
+.pasos.brief{display:flex;gap:8px;justify-content:center;margin-bottom:14px;color:var(--muted);font-weight:600}
+
+/* Alternar alineación: odd izquierda, even derecha */
+.module:nth-child(odd) .module-inner{text-align:left}
+.module:nth-child(even) .module-inner{text-align:right}
+
+/* overlay de puntitos (estrellitas) animadas */
+.module::before{content:"";position:absolute;inset:-20%;background-image:radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);background-size:12px 12px;opacity:0.6;transform:translate3d(0,0,0);z-index:1;pointer-events:none}
+.module::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0));mix-blend-mode:overlay;z-index:3;pointer-events:none;opacity:0.6}
+
+/* movimiento sutil de los puntitos */
+.module::before{animation: floatDots 16s linear infinite}
+@keyframes floatDots{from{background-position:0 0}to{background-position:120px 80px}}
+
+/* botones en módulos */
+.module .btn{margin-top:8px}
+
+@media (max-width:1000px){
+   .services-grid{grid-template-columns:1fr;gap:18px}
+   .module:nth-child(even) .module-inner{text-align:left}
 }
 
-/* Ajustes del nuevo LOGO.png */
-.logo img {
-    max-height: 60px;
-    width: auto;
-    transition: transform 0.3s;
-    vertical-align: middle;
-}
+/* small utility tweaks */
+a{color:inherit}
 
-.logo img:hover {
-    transform: scale(1.05);
-}
-
-/* Enlaces del menú */
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #ff4757;
-}
-
-/* ==========================================
-   SECCIÓN DE BIENVENIDA (HERO)
-   ========================================== */
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(15, 15, 18, 1)), url('https://w0.peakpx.com/wallpaper/826/874/HD-wallpaper-gta-v-gta-5-rockstar.jpg') no-repeat center center/cover;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-    color: #ccc;
-}
-
-/* ==========================================
-   BOTONES
-   ========================================== */
-.btn-principal, .btn-discord, .btn-whitelist, .btn-tienda {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: transform 0.2s, background-color 0.3s;
-}
-
-/* Botón Principal (Hero) */
-.btn-principal { background-color: #ff4757; color: white; }
-.btn-principal:hover { background-color: #ff6b81; transform: scale(1.05); }
-
-/* Botón Discord */
-.btn-discord { background-color: #7289da; color: white; }
-.btn-discord:hover { background-color: #5b73c7; transform: scale(1.05); }
-
-/* Botón Whitelist */
-.btn-whitelist { background-color: #2ed573; color: white; }
-.btn-whitelist:hover { background-color: #26af5f; transform: scale(1.05); }
-
-/* Botón Tienda */
-.btn-tienda { background-color: #ffa502; color: white; }
-.btn-tienda:hover { background-color: #e69500; transform: scale(1.05); }
-
-/* ==========================================
-   ESTILOS DE SECCIONES
-   ========================================== */
-section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-}
-
-.seccion-oscura { background-color: #14141b; }
-.seccion-clara { background-color: #1e1e26; }
-.seccion-tienda { background-color: #111116; border-top: 2px solid #ffa502; }
-
-/* Tarjetas de Pasos Whitelist */
-.pasos {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 40px auto;
-    max-width: 900px;
-    flex-wrap: wrap;
-}
-
-.paso {
-    background-color: #14141b;
-    padding: 20px;
-    border-radius: 5px;
-    border-left: 4px solid #2ed573;
-    flex: 1;
-    min-width: 250px;
-}
-
-/* ==========================================
-   FOOTER (PIE DE PÁGINA)
-   ========================================== */
-footer {
-    background-color: #0a0a0d;
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-}

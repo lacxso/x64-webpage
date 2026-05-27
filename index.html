@@ -5,64 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servidor FiveM | Inicio</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#ff6a00">
 </head>
 <body>
 
-    <!-- Encabezado / Navbar -->
-    <header>
-       <div class="logo">
-            <img src="LOGO.png" alt="Logo x64" style="height: 100px; vertical-align: middle;">
-       </div>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#discord">Discord</a>
-            <a href="#whitelist">Whitelist</a>
-            <a href="#tienda">Tienda VIP</a>
-        </nav>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="#inicio"><img src="LOGO.png" alt="Logo servidor" /></a>
+            </div>
+            <nav class="main-nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#discord">Discord</a>
+                <a href="#whitelist">Whitelist</a>
+                <a href="#tienda">Tienda</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Sección de Bienvenida -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>BIENVENIDOS A LA COMUNIDAD</h1>
-            <p>Disfruta de la mejor experiencia de Roleplay con mapeados únicos, facciones optimizadas y staff activo 24/7.</p>
-            <a href="#whitelist" class="btn-principal">¡Hacer Whitelist ahora!</a>
+    <main class="site-main">
+        <section id="inicio" class="hero">
+            <div class="container hero-inner">
+                <h1 class="hero-title">Bienvenidos a <span class="accent">x64</span> RP</h1>
+                <p class="hero-sub">Roleplay serio, comunidad grande y staff activo. Entra y vive la experiencia.</p>
+                <div class="hero-cta">
+                    <a href="#whitelist" class="btn btn-primary">Hacer Whitelist</a>
+                    <a href="#discord" class="btn btn-outline">Unirse al Discord</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2>Nuestros puntos fuertes</h2>
+                <div class="grid features-grid">
+                    <div class="card feature">Mapeados únicos y optimizados</div>
+                    <div class="card feature">Staff activo 24/7</div>
+                    <div class="card feature">Economía realista y balanceada</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section services">
+            <div class="container">
+                <div class="services-grid">
+                    <article class="module">
+                        <div class="module-inner">
+                            <h3>Discord</h3>
+                            <p>Canales de soporte, anuncios y comunidad. Síguenos para no perder eventos.</p>
+                            <a href="https://discord.gg/v5EF3xJByE" target="_blank" class="btn btn-discord">Entrar al Discord</a>
+                        </div>
+                    </article>
+
+                    <article class="module">
+                        <div class="module-inner">
+                            <h3>Whitelist</h3>
+                            <p>Proceso simple para asegurar calidad de roleo: lee normas, completa el formulario y espera revisión.</p>
+                            <div class="pasos brief">
+                                <span>1. Lee normas</span>
+                                <span>2. Rellena formulario</span>
+                                <span>3. Revisión staff</span>
+                            </div>
+                            <a href="https://forms.google.com" target="_blank" class="btn btn-primary">Abrir formulario</a>
+                        </div>
+                    </article>
+
+                    <article class="module">
+                        <div class="module-inner">
+                            <h3>Tienda VIP</h3>
+                            <p>Apoya el servidor y consigue ventajas estéticas y rangos exclusivos.</p>
+                            <a href="https://www.tebex.io" target="_blank" class="btn btn-outline">Ir a la tienda</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 x64 RP. Todos los derechos reservados.</p>
         </div>
-    </section>
-
-    <!-- Sección Discord -->
-    <section id="discord" class="seccion-oscura">
-        <h2>ÚNETE A NUESTRO DISCORD</h2>
-        <p>Entérate de las novedades, anuncios, sorteos y conecta con la comunidad.</p>
-        <div class="contenedor-widget">
-            <!-- REEMPLAZA ESTE COMENTARIO MÁS ADELANTE CON TU WIDGET REAL DE DISCORD -->
-            <a href="https://discord.gg/TU_INVITACION" target="_blank" class="btn-discord">Entrar al Discord oficial</a>
-        </div>
-    </section>
-
-    <!-- Sección Whitelist -->
-    <section id="whitelist" class="seccion-clara">
-        <h2>PROCESO DE WHITELIST</h2>
-        <p>Para garantizar el mejor rol, exigimos un test básico de normativas. ¡No te preocupes, es sencillo!</p>
-        <div class="pasos">
-            <div class="paso">1. Lee la normativa en Discord</div>
-            <div class="paso">2. Rellena el formulario web</div>
-            <div class="paso">3. Realiza la entrevista oral si es necesario</div>
-        </div>
-        <!-- AQUÍ IRÁ EL LINK A TU FORMULARIO DE TALLY O GOOGLE FORMS -->
-        <a href="https://forms.google.com" target="_blank" class="btn-whitelist">Abrir Formulario de Whitelist</a>
-    </section>
-
-    <!-- Sección Tienda -->
-    <section id="tienda" class="seccion-tienda">
-        <h2>TIENDA VIP</h2>
-        <p>Apoya el mantenimiento del servidor y consigue beneficios exclusivos: coches custom, propiedades y rangos VIP.</p>
-        <!-- AQUÍ IRÁ EL LINK A TU TIENDA DE TEBEX -->
-        <a href="https://www.tebex.io" target="_blank" class="btn-tienda">Ir a la Tienda Oficial (Tebex)</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Mi Servidor FiveM. Todos los derechos reservados. No afiliado con Rockstar Games.</p>
     </footer>
 
 </body>
