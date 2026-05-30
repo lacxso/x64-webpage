@@ -17,7 +17,7 @@
             <nav class="main-nav">
                 <a href="#inicio">Inicio</a>
                 <a href="#discord">Discord</a>
-                <a href="#whitelist">Whitelist</a>
+                <a href="#" class="open-whitelist-btn">Whitelist</a>
                 <a href="#tienda">Tienda</a>
             </nav>
         </div>
@@ -29,7 +29,7 @@
                 <h1 class="hero-title">Bienvenidos a <span class="accent">x64</span> RP</h1>
                 <p class="hero-sub">Roleplay serio, comunidad grande y staff activo. Entra y vive la experiencia.</p>
                 <div class="hero-cta">
-                    <a href="#whitelist" class="btn btn-primary">Hacer Whitelist</a>
+                    <a href="#" class="btn btn-primary open-whitelist-btn">Hacer Whitelist</a>
                     <a href="#discord" class="btn btn-outline">Unirse al Discord</a>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                                 <span>2. Rellena formulario</span>
                                 <span>3. Revisión staff</span>
                             </div>
-                            <a href="https://forms.google.com" target="_blank" class="btn btn-primary">Abrir formulario</a>
+                            <a href="#" class="btn btn-primary open-whitelist-btn">Abrir formulario</a>
                         </div>
                     </article>
 
@@ -97,6 +97,50 @@
             <p>&copy; 2026 x64 RP. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <div id="whitelistModal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <h3 class="modal-title">Whitelist <span class="accent">Abierta</span></h3>
+            <p class="modal-text">Actualmente <strong>no es necesario</strong> realizar un proceso de whitelist para entrar a jugar.</p>
+            <p class="modal-text-sub">¡Cualquier usuario puede acceder directamente al servidor ahora mismo! Te esperamos dentro.</p>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="modalAcceptBtn">¡Entendido!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('whitelistModal');
+        const openButtons = document.querySelectorAll('.open-whitelist-btn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const acceptBtn = document.getElementById('modalAcceptBtn');
+
+        // Abrir modal al hacer clic en cualquier botón de Whitelist
+        openButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
+            });
+        });
+
+        // Función para cerrar modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Devuelve el scroll
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        acceptBtn.addEventListener('click', closeModal);
+
+        // Cerrar también si se hace clic fuera de la tarjeta del pop-up
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
